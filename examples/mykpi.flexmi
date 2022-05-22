@@ -1,3 +1,4 @@
+
 KpiModel: {
 Dimension: {
 name: Environment,
@@ -7,9 +8,20 @@ parameters: {
 Parameter: {name: citypop},
 Parameter: {name: TGA}, 
 Parameter: {name: BLP}, 
-Parameter: {name: TM}
+Parameter: {name: TM},
+Parameter: {name: NoiseLevel},
+Parameter: {name: districtPopPerc}
 }, 
 kpis: {
+Kpi:{
+name: NoiseLV,
+description: Noise pollution,
+value: { valuetype: { 
+    AggregatedRealValue: { oper: MULT, targetvalue: 100.0, values:{
+    RealValue: {parameter: districtPopPerc},    
+    AggregatedBoolValue: { oper: GT, targetvalue: true, 
+    values: { RealValue: {parameter: NoiseLevel}, StaticRealValue: {actualizedvalue: 55.0}}}}}
+}}},
 Kpi: { 
 name: GA,
 description: Green Areas,
