@@ -5,6 +5,11 @@ sources: {
     Stakeholder: { name: AMA, organization: PublicTransport},
     MonitoringInfrastructure: { name: SmartEnvironment, devices: 
     { Sensor: {name: Tinkerforge, model: A43dS} }},
+    ExternalService: {name: getPM10, url: http://raspberrypiludo.local:8080/airquality, 
+    properties: {Property: {name: pm10, nestedproperty: {name: value}}}},
+    ExternalService: {name: getPM25, url: http://raspberrypiludo.local:8080/airquality, 
+      properties: {Property: {name: pm25, nestedproperty: {name: value}}}
+    },
     ExternalService: {name: getNoise, url: http://raspberrypiludo.local:8080/noise, 
       properties: {Property: {name: noise, nestedproperty: {name: value}}}
     },
@@ -30,29 +35,10 @@ sources: {
         properties: {
             Property: {name: main, nestedproperty: {name: humidity}}
         }
-    },
-    ExternalService: {name: getPM10, url: http://raspberrypiludo.local:8080/airquality, 
-    properties: {Property: {name: pm10, nestedproperty: {name: value}}}},
-    ExternalService: {name: getPM25, url: http://raspberrypiludo.local:8080/airquality, 
-      properties: {Property: {name: pm25, nestedproperty: {name: value}}}
     }
 }
 , 
-data: { 
-DataPackage: {
-name: air quality,        
-data: {
-    RealValue: {name: PM2.5, units: ng/m3, value: 11.19, src: getPM25},
-    RealValue: {name: PM10, units: ng/m3, value: 12.0,  src: getPM10},
-    RealValue: {name: NO2, units: ng/m3, value: 18.0,  src: SmartEnvironment},
-    RealValue: {name: O3, units: ng/m3, value: 25.0,  src: SmartEnvironment},
-    RealValue: {name: SO2, units: ng/m3,  value: 0.20,  src: SmartEnvironment},
-    RealValue: {name: countrysideTemp, units: °C, value: 38.0, src: getCountrySideTemp},
-    RealValue: {name: cityTemp, units: °C, value: 32.0, src: openweathertemp},
-    RealValue: {name: humidity, units: "%RHm", src: getHumidity, value: 3.0}
-}
-},  
-DataPackage: {
+data: { DataPackage: {
 name: statistics,  
 data: { 
 RealValue: {name: citypop, units: inhabitants, value: 70000, src: Comune},
@@ -63,10 +49,31 @@ BoolValue: {name: TM, units: availability, value: true, src: AMA}
 }
 }, 
 DataPackage: {
+name: air quality,        
+data: {
+    #RealValue: {name: PM2.5, units: ng/m3, value: 11.19, src: getPM25},
+    RealValue: {name: PM2.5, units: ng/m3, value: 11.19},
+    RealValue: {name: PM10, units: ng/m3, value: 12.0, src: getPM10},
+    #RealValue: {name: PM10, units: ng/m3, value: 12.0},
+    RealValue: {name: NO2, units: ng/m3, value: 18.0},
+    RealValue: {name: O3, units: ng/m3, value: 25.0},
+    RealValue: {name: SO2, units: ng/m3,  value: 0.20},
+    #RealValue: {name: countrysideTemp, units: °C, value: 38.0, src: getCountrySideTemp},
+    RealValue: {name: countrysideTemp, units: °C, value: 38.0},
+    RealValue: {name: cityTemp, units: °C, value: 32.0, src: openweathertemp},
+    #RealValue: {name: cityTemp, units: °C, value: 32.0},
+    RealValue: {name: humidity, units: "%RHm", value: 3.0, src: getHumidity}
+    #RealValue: {name: humidity, units: "%RHm", value: 3.0, src: openweatherhumidity}
+    #RealValue: {name: humidity, units: "%RHm", value: 3.0}
+}
+},
+DataPackage: {
     name: smart building,
     data: {
-        RealValue: {name: NoiseLevel, units: decibel, value: 60.0, src: getNoise},
-        RealValue: {name: illuminance, units: lx, value: 340.0, src: getIlluminance}
+        #RealValue: {name: NoiseLevel, units: decibel, value: 60.0, src: getNoise},
+        RealValue: {name: NoiseLevel, units: decibel, value: 60.0},
+        #RealValue: {name: illuminance, units: lx, value: 340.0, src: getIlluminance},
+        RealValue: {name: illuminance, units: lx, value: 340.0}
     }
 }
 }}

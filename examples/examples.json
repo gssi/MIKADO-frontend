@@ -9,6 +9,14 @@
 		"outputType": "html"
 	},
 	{
+		"id": "aq-manual-par",
+		"title": "L'Aquila SmartCity (manual par) ",
+		"language": "egl",
+		"kpiflexmi": "mykpi.flexmi",
+		"scflexmi": "aq-manual.flexmi",
+		"outputType": "html"
+	},
+	{
 		"id": "bz",
 		"title": "Bolzano SmartCity Evaluation",
 		"language": "egl",

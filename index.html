@@ -31,20 +31,19 @@
                 <span class="default-icon-menu"></span>
             </button>
             <ul class="navview-menu">
-                <li class="item-header">MIKADO Playground</li>
+                <li class="item-header">MIKADO@Runtime</li>
                 <li class="item-separator"></li>
-                <li class="item-separator" id="examples-end"></li>
                 <li>
-                    
-                    <a href="#" onclick="about(event)">
-                        <span class="icon"><span class="mif-example-16 mif-info"></span></span>
-                        <span class="caption">About</span>
-                    </a>
                     <a href="../" >
                         <span class="icon"><span class="mif-example-16 mif-home"></span></span>
                         <span class="caption">Home (back)</span>
                     </a>
                 </li>
+                <li class="item-separator" id="examples-end"></li>
+                <li><a href="#" onclick="about(event)">
+                    <span class="icon"><span class="mif-example-16 mif-info"></span></span>
+                    <span class="caption">About</span>
+                </a></li>
             </ul>
         </div>
         <div class="navview-content">
@@ -69,7 +68,7 @@
                   
                 </div>
                 </div>
-                <div data-role="splitter"  class="h-100" data-split-mode="vertical" style="min-height: 1500px;" >
+                <div data-role="splitter"  class="h-100" data-split-mode="vertical" style="min-height: 3500px;" >
                     <div class="d-flex flex-justify-left flex-align-left" data-role="panel" data-title-caption="Generated Dashboard" >
                         <div class="d-flex flex-justify-center flex-align-left"  id="evalresult"></div>
                     </div>
@@ -227,6 +226,7 @@ if (xhr.status === 200) {
 
                 var caption = document.createElement("caption");
                 caption.innerHTML = example.title;
+
                 caption.classList.add("caption");
                 a.appendChild(caption);
             }
@@ -252,6 +252,7 @@ if (xhr.status === 200) {
        
         
         editors.forEach(e => e.resize());
+       
     }
 
     function toggle(elementId, onEmpty) {
@@ -510,7 +511,7 @@ function about(event) {
         event.preventDefault();
         $('#about-info-box').data('infobox').open();
     }
-    
+  
     </script>
 </body>
 </html>
