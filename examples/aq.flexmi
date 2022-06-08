@@ -5,16 +5,16 @@ sources: {
     Stakeholder: { name: AMA, organization: PublicTransport},
     MonitoringInfrastructure: { name: SmartEnvironment, devices: 
     { Sensor: {name: Tinkerforge, model: A43dS} }},
-    ExternalService: {name: getNoise, url: http://raspberrypiludo.local:8080/noise, 
+    ExternalService: {name: getNoise, url: http://172.16.5.2:8080/noise, 
       properties: {Property: {name: noise, nestedproperty: {name: value}}}
     },
-    ExternalService: {name: getCountrySideTemp, url: http://raspberrypiludo.local:8080/airquality, 
+    ExternalService: {name: getCountrySideTemp, url: http://172.16.5.2:8080/airquality, 
       properties: {Property: {name: temperature, nestedproperty: {name: value}}}
     },
-    ExternalService: {name: getHumidity, url: http://raspberrypiludo.local:8080/airquality, 
+    ExternalService: {name: getHumidity, url: http://172.16.5.2:8080/airquality, 
       properties: {Property: {name: humidity, nestedproperty: {name: value}}}
     },
-     ExternalService: {name: getIlluminance, url: http://raspberrypiludo.local:8080/ambientlight, 
+     ExternalService: {name: getIlluminance, url: http://172.16.5.2:8080/ambientlight, 
       properties: {Property: {name: illuminance, nestedproperty: {name: value}}}
     },
     Opendata: {
@@ -31,9 +31,9 @@ sources: {
             Property: {name: main, nestedproperty: {name: humidity}}
         }
     },
-    ExternalService: {name: getPM10, url: http://raspberrypiludo.local:8080/airquality, 
+    ExternalService: {name: getPM10, url: http://172.16.5.2:8080/airquality, 
     properties: {Property: {name: pm10, nestedproperty: {name: value}}}},
-    ExternalService: {name: getPM25, url: http://raspberrypiludo.local:8080/airquality, 
+    ExternalService: {name: getPM25, url: http://172.16.5.2:8080/airquality, 
       properties: {Property: {name: pm25, nestedproperty: {name: value}}}
     }
 }
